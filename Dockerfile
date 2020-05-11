@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
 # make librdkafka
 RUN git clone https://github.com/edenhill/librdkafka.git && cd ./librdkafka && git checkout v1.3.0; \
     ./configure --enable-static; \
-    make && make install
+    make && make install; \
+    cd .. && rm -rf ./librdkafka
 
 # install golang
 RUN wget -O go.tgz https://studygolang.com/dl/golang/go1.14.2.linux-amd64.tar.gz; \
